@@ -1,0 +1,47 @@
+# Simple To-Do List Manager
+
+tasks = []  #initially empty list of tasks
+
+def show_tasks(): # Display all tasks
+    if not tasks:
+        print("No tasks yet!")
+    else:
+        print("\nYour Tasks:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+
+def add_task(): # Add a new task
+    task = input("Enter a new task: ")
+    tasks.append(task)
+    print("Task added!")
+
+def remove_task(): # Remove a task by its number
+    show_tasks()
+    if tasks:
+        try:
+            num = int(input("Enter task number to remove: "))
+            tasks.pop(num-1)
+            print("Task removed!")
+        except (ValueError, IndexError):
+            print("Invalid choice!")
+
+while True:
+    print("\n--- To-Do List Manager ---")
+    print("1. Show tasks")
+    print("2. Add task")
+    print("3. Remove task")
+    print("4. Exit")
+    
+    choice = input("Choose an option: ")
+    
+    if choice == "1":
+        show_tasks()
+    elif choice == "2":
+        add_task()
+    elif choice == "3":
+        remove_task()
+    elif choice == "4":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid option. Try again.")
